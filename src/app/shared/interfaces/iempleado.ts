@@ -1,12 +1,12 @@
-export interface IEstudiante {
-  id_estudiante: number;
+export interface IEmpleado {
+  id_empleado: number;
   id_tipo_identificacion: number;
   identificacion: string;
   nombre: string;
   apellidos: string;
-  correo: string;
   telefono: string;
-  fecha_nacimiento: Date;
-  direccion: string;
+  correo: string;
   estado: string;
+  direccion: string;
+  puesto: string;
 }
