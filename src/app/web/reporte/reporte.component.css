@@ -1,0 +1,42 @@
+.reporte-list .list-group-item {
+  border-color: #e8ecf0 !important;
+  padding: 1rem 1.25rem;
+  color: #334155;
+  font-size: 0.9375rem;
+  transition:
+    background-color 0.12s,
+    color 0.12s;
+}
+
+.reporte-list .list-group-item:first-child {
+  border-top: 0 !important;
+}
+
+.reporte-list__placeholder {
+  cursor: default;
+  opacity: 0.92;
+}
+
+.reporte-list__placeholder:hover {
+  background-color: #f8fafc;
+}
+
+.reporte-list__icon {
+  font-size: 1.25rem;
+  color: #64748b;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  transition:
+    color 0.12s,
+    background-color 0.12s;
+}
+
+.reporte-list small {
+  font-size: 0.8125rem;
+  color: #94a3b8 !important;
+}

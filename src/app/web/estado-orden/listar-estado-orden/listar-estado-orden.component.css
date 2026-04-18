@@ -1,0 +1,115 @@
+:host {
+  display: block;
+}
+
+.estado-orden-list-table {
+  --mat-table-background-color: #ffffff;
+  --mat-table-header-headline-color: #212529;
+  --mat-table-row-item-label-text-color: #212529;
+  --mat-table-row-item-outline-color: #e9ecef;
+
+  border: 1px solid #e9ecef;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-mdc-header-row,
+:host ::ng-deep .estado-orden-list-table .mdc-data-table__header-row {
+  background: #f1f3f5 !important;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-mdc-header-cell,
+:host ::ng-deep .estado-orden-list-table .mdc-data-table__header-cell {
+  background: #f1f3f5 !important;
+  color: #212529 !important;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid #dee2e6 !important;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-sort-header-content {
+  color: #212529 !important;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-sort-header-arrow,
+:host ::ng-deep .estado-orden-list-table .mat-mdc-sort-header-arrow {
+  color: #495057;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-mdc-table,
+:host ::ng-deep .estado-orden-list-table .mdc-data-table__table {
+  background: #fff !important;
+}
+
+:host ::ng-deep .estado-orden-list-table tbody {
+  background: #fff !important;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-mdc-row,
+:host ::ng-deep .estado-orden-list-table .mdc-data-table__row {
+  background-color: #ffffff !important;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-mdc-cell,
+:host ::ng-deep .estado-orden-list-table .mdc-data-table__cell {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+  border-bottom-color: #e9ecef !important;
+  font-size: 0.9375rem;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-mdc-cell span,
+:host ::ng-deep .estado-orden-list-table .mdc-data-table__cell span {
+  color: #212529 !important;
+}
+
+:host ::ng-deep .estado-orden-list-table tbody .mat-mdc-row:nth-of-type(even) .mat-mdc-cell,
+:host ::ng-deep .estado-orden-list-table tbody .mdc-data-table__row:nth-of-type(even) .mdc-data-table__cell {
+  background-color: #f8f9fa !important;
+}
+
+:host ::ng-deep .estado-orden-list-table tbody .mat-mdc-row:nth-of-type(even),
+:host ::ng-deep .estado-orden-list-table tbody .mdc-data-table__row:nth-of-type(even) {
+  background-color: #f8f9fa !important;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-mdc-row:hover .mat-mdc-cell,
+:host ::ng-deep .estado-orden-list-table .mdc-data-table__row:hover .mdc-data-table__cell {
+  background-color: #e9ecef !important;
+}
+
+:host ::ng-deep .estado-orden-list-table .mat-mdc-no-data-row .mat-mdc-cell {
+  background: #fff !important;
+  color: #6c757d !important;
+}
+
+:host ::ng-deep mat-paginator.estado-orden-list-paginator {
+  --mat-paginator-container-background-color: #f8f9fa;
+  --mat-paginator-container-text-color: #212529;
+  --mat-select-panel-background-color: #fff;
+  --mat-paginator-enabled-icon-color: #495057;
+  --mat-paginator-disabled-icon-color: #adb5bd;
+  border-top: 1px solid #dee2e6;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+:host ::ng-deep mat-paginator.estado-orden-list-paginator .mat-mdc-paginator-container {
+  background: #f8f9fa !important;
+  color: #212529 !important;
+}
+
+:host ::ng-deep mat-paginator.estado-orden-list-paginator .mat-mdc-paginator-range-label,
+:host ::ng-deep mat-paginator.estado-orden-list-paginator .mat-mdc-select-value {
+  color: #212529 !important;
+}
+
+:host ::ng-deep mat-paginator.estado-orden-list-paginator .mat-mdc-icon-button {
+  color: #495057 !important;
+}
+
+:host ::ng-deep mat-paginator.estado-orden-list-paginator .mat-mdc-icon-button[disabled] {
+  color: #adb5bd !important;
+}

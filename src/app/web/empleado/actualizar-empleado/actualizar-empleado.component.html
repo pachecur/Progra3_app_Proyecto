@@ -1,0 +1,220 @@
+<div
+    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-buttom"
+>
+    <h3 class="h3 fw-semibold text-dark mb-0">Actualizar Empleado</h3>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a
+            type="button"
+            class="btn btn-sm btn-outline-danger d-flex align-items-center gap-2 fw-medium"
+            routerLink="/app/empleados"
+        >
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Regresar al listado</span>
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Ingrese los valores requeridos. <span class="text-danger">*</span>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formGuardar" (ngSubmit)="actualizar()">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label"
+                        >Tipo de identificación
+                        <span class="text-danger">*</span></label
+                    >
+                    <select
+                        class="form-select"
+                        formControlName="id_tipo_identificacion"
+                    >
+                        <option [ngValue]="null" disabled>Seleccione...</option>
+                        @for (t of tipos; track t.id_tipo_identificacion) {
+                            <option [ngValue]="t.id_tipo_identificacion">
+                                {{ t.nombre }}
+                            </option>
+                        }
+                    </select>
+                    @if (
+                        id_tipo_identificacion.errors &&
+                        (id_tipo_identificacion.dirty ||
+                            id_tipo_identificacion.touched)
+                    ) {
+                        <span class="text-danger d-block small mt-1"
+                            >Seleccione un tipo de identificación.</span
+                        >
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label"
+                        >Identificación
+                        <span class="text-danger">*</span></label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Número de identificación..."
+                        formControlName="identificacion"
+                    />
+                    @if (
+                        identificacion.errors &&
+                        (identificacion.dirty || identificacion.touched)
+                    ) {
+                        <span class="text-danger d-block small mt-1"
+                            >La identificación es requerida.</span
+                        >
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label"
+                        >Nombre <span class="text-danger">*</span></label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Nombre..."
+                        formControlName="nombre"
+                    />
+                    @if (nombre.errors && (nombre.dirty || nombre.touched)) {
+                        <span class="text-danger d-block small mt-1"
+                            >El nombre es requerido.</span
+                        >
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label"
+                        >Apellidos <span class="text-danger">*</span></label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Apellidos..."
+                        formControlName="apellidos"
+                    />
+                    @if (
+                        apellidos.errors &&
+                        (apellidos.dirty || apellidos.touched)
+                    ) {
+                        <span class="text-danger d-block small mt-1"
+                            >Los apellidos son requeridos.</span
+                        >
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label"
+                        >Teléfono <span class="text-danger">*</span></label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Teléfono..."
+                        formControlName="telefono"
+                    />
+                    @if (
+                        telefono.errors && (telefono.dirty || telefono.touched)
+                    ) {
+                        <span class="text-danger d-block small mt-1"
+                            >El teléfono es requerido.</span
+                        >
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label"
+                        >Correo <span class="text-danger">*</span></label
+                    >
+                    <input
+                        type="email"
+                        class="form-control"
+                        placeholder="correo@ejemplo.com"
+                        formControlName="correo"
+                    />
+                    @if (
+                        correo.errors?.["required"] &&
+                        (correo.dirty || correo.touched)
+                    ) {
+                        <span class="text-danger d-block small mt-1"
+                            >El correo es requerido.</span
+                        >
+                    }
+                    @if (
+                        correo.errors?.["email"] &&
+                        (correo.dirty || correo.touched)
+                    ) {
+                        <span class="text-danger d-block small mt-1"
+                            >Ingrese un correo válido.</span
+                        >
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label"
+                        >Estado <span class="text-danger">*</span></label
+                    >
+                    <select class="form-select" formControlName="estado">
+                        <option ngValue="1">Activo</option>
+                        <option ngValue="0">Inactivo</option>
+                    </select>
+                    @if (estado.errors && (estado.dirty || estado.touched)) {
+                        <span class="text-danger d-block small mt-1"
+                            >Seleccione un estado.</span
+                        >
+                    }
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label"
+                        >Puesto <span class="text-danger">*</span></label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Puesto..."
+                        formControlName="puesto"
+                    />
+                    @if (puesto.errors && (puesto.dirty || puesto.touched)) {
+                        <span class="text-danger d-block small mt-1"
+                            >El puesto es requerido.</span
+                        >
+                    }
+                </div>
+                <div class="col-12">
+                    <label class="form-label"
+                        >Dirección <span class="text-danger">*</span></label
+                    >
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Dirección..."
+                        formControlName="direccion"
+                    />
+                    @if (
+                        direccion.errors &&
+                        (direccion.dirty || direccion.touched)
+                    ) {
+                        <span class="text-danger d-block small mt-1"
+                            >La dirección es requerida.</span
+                        >
+                    }
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                <button
+                    type="submit"
+                    class="btn btn-outline-dark"
+                    [disabled]="formGuardar.invalid"
+                >
+                    <i class="bi bi-plus-circle"></i>
+                    Guardar
+                </button>
+                <a
+                    type="button"
+                    class="btn btn-outline-danger"
+                    routerLink="/app/empleados"
+                >
+                    <i class="bi bi-x-circle"></i>
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

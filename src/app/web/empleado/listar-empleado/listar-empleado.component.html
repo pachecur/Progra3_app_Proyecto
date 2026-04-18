@@ -1,0 +1,141 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-buttom">
+  <h3 class="h3 fw-semibold text-dark mb-0">Empleados</h3>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a
+      type="button"
+      class="btn btn-sm btn-outline-danger d-flex align-items-center gap-2 fw-medium"
+      routerLink="/app/empleados/guardar"
+    >
+      <i class="bi bi-plus-circle"></i>
+      <span>Nuevo</span>
+    </a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body p-4">
+    <div class="input-group mb-4">
+      <input
+        type="search"
+        class="form-control border-end-0"
+        placeholder="Buscar empleado..."
+        #txtBuscar
+        (keyup)="buscar(txtBuscar.value)"
+      />
+      <span class="input-group-text bg-white border-start-0">
+        <i class="bi bi-search text-muted"></i>
+      </span>
+    </div>
+
+    <div class="table-responsive empleado-list-table">
+      <table mat-table [dataSource]="datos" matSort class="w-100 mb-0">
+        <ng-container matColumnDef="id_empleado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
+            <span class="fs-6">N°</span>
+          </th>
+          <td mat-cell *matCellDef="let emp" class="text-center">
+            <span>{{ emp.id_empleado }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="identificacion">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
+            <span class="fs-6">Identificación</span>
+          </th>
+          <td mat-cell *matCellDef="let emp">
+            <span>{{ emp.identificacion }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
+            <span class="fs-6">Nombre</span>
+          </th>
+          <td mat-cell *matCellDef="let emp">
+            <span>{{ emp.nombre }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="apellidos">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
+            <span class="fs-6">Apellidos</span>
+          </th>
+          <td mat-cell *matCellDef="let emp">
+            <span>{{ emp.apellidos }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="correo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
+            <span class="fs-6">Correo</span>
+          </th>
+          <td mat-cell *matCellDef="let emp">
+            <span>{{ emp.correo }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="puesto">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
+            <span class="fs-6">Puesto</span>
+          </th>
+          <td mat-cell *matCellDef="let emp">
+            <span>{{ emp.puesto }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estado">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center">
+            <span class="fs-6">Estado</span>
+          </th>
+          <td mat-cell *matCellDef="let emp" class="text-center">
+            <span>{{ etiquetaEstado(emp.estado) }}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef class="text-center">
+            <span class="fs-6">Acciones</span>
+          </th>
+          <td mat-cell *matCellDef="let emp" class="text-center">
+            <div class="d-flex gap-2 justify-content-center">
+              <a
+                routerLink="/app/empleados/actualizar/{{ emp.id_empleado }}"
+                class="btn btn-sm btn-outline-dark"
+                title="Editar"
+              >
+                <i class="bi bi-pencil"></i>
+              </a>
+              <button
+                type="button"
+                class="btn btn-sm"
+                [class.btn-outline-danger]="emp.estado === 1"
+                [class.btn-outline-success]="emp.estado !== 1"
+                [title]="emp.estado === 1 ? 'Desactivar' : 'Activar'"
+                (click)="cambiarEstado(emp)"
+              >
+                <i
+                  [class.bi-toggle-on]="emp.estado === 1"
+                  [class.bi-toggle-off]="emp.estado !== 1"
+                  class="bi"
+                ></i>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnas" class="border-0"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnas" class="border-bottom border-light"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell text-center text-muted py-4" [attr.colspan]="columnas.length">
+            Sin datos para mostrar.
+          </td>
+        </tr>
+      </table>
+    </div>
+    <mat-paginator
+      class="empleado-list-paginator"
+      [pageSizeOptions]="[5, 10, 25]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</div>

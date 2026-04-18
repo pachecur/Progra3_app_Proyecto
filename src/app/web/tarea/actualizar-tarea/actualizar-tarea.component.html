@@ -1,0 +1,83 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-buttom">
+  <h3 class="h3 fw-semibold text-dark mb-0">Actualizar tarea</h3>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a
+      type="button"
+      class="btn btn-sm btn-outline-danger d-flex align-items-center gap-2 fw-medium"
+      routerLink="/app/tareas"
+    >
+      <i class="bi bi-box-arrow-left"></i>
+      <span>Regresar al listado</span>
+    </a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Ingrese los valores requeridos. <span class="text-danger">*</span>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="formGuardar" (ngSubmit)="actualizar()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Nombre <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre de la tarea..."
+            formControlName="nombre"
+          />
+          @if (nombre.errors?.['required'] && (nombre.dirty || nombre.touched)) {
+            <span class="text-danger d-block small mt-1">El nombre es requerido.</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Estado <span class="text-danger">*</span></label>
+          <select class="form-select" formControlName="estado">
+            <option [ngValue]="0">Inactiva</option>
+            <option [ngValue]="1">Activa</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Descripción</label>
+          <textarea
+            class="form-control"
+            rows="3"
+            placeholder="Detalle de la tarea..."
+            formControlName="descripcion"
+          ></textarea>
+          @if (descripcion.errors?.['maxlength'] && (descripcion.dirty || descripcion.touched)) {
+            <span class="text-danger d-block small mt-1">Máximo 2000 caracteres.</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Hora inicio <span class="text-danger">*</span></label>
+          <input type="time" class="form-control" formControlName="hora_inicio" />
+          @if (hora_inicio.errors?.['required'] && (hora_inicio.dirty || hora_inicio.touched)) {
+            <span class="text-danger d-block small mt-1">Indique la hora de inicio.</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Hora fin <span class="text-danger">*</span></label>
+          <input type="time" class="form-control" formControlName="hora_fin" />
+          @if (hora_fin.errors?.['required'] && (hora_fin.dirty || hora_fin.touched)) {
+            <span class="text-danger d-block small mt-1">Indique la hora de fin.</span>
+          }
+        </div>
+      </div>
+      @if (formGuardar.errors?.['horaFinInvalida'] && (hora_fin.dirty || hora_fin.touched)) {
+        <p class="text-danger small mt-2 mb-0">La hora de fin debe ser posterior a la de inicio.</p>
+      }
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+        <button type="submit" class="btn btn-outline-dark" [disabled]="formGuardar.invalid">
+          <i class="bi bi-plus-circle"></i>
+          Guardar
+        </button>
+        <a type="button" class="btn btn-outline-danger" routerLink="/app/tareas">
+          <i class="bi bi-x-circle"></i>
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,4 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+  --clr-primary: #0ea5e9;
+  --clr-content-bg: #f8fafc;
+  --clr-sidebar-bg: #ffffff;
+  --clr-sidebar-border: #e8ecf0;
+  --clr-header-bg: #ffffff;
+  --clr-header-border: #e8ecf0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', Roboto, 'Helvetica Neue', sans-serif;
+  background-color: var(--clr-content-bg);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--clr-primary);
+  --bs-btn-border-color: var(--clr-primary);
+  --bs-btn-hover-bg: #0284c7;
+  --bs-btn-hover-border-color: #0284c7;
+}
+
+.text-primary {
+  color: var(--clr-primary) !important;
+}
+
+.app-sidebar .nav-link.active {
+  color: var(--clr-primary) !important;
+  font-weight: 600;
+}

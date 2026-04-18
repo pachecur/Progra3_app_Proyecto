@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-buttom">
+    <h3 class="h3 fw-semibold text-dark mb-0">Guardar Tipo de Identificación</h3>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <a type="button" class="btn btn-sm btn-outline-danger d-flex align-items-center gap-2 fw-medium"
+            routerLink="/app/tipos-identificacion">
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Regresar al listado</span>
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Ingrese los valores requeridos. <span class="text-danger">*</span>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formGuardar" (ngSubmit)="guardar()">
+            <div class="mb-3">
+                <label class="form-label">Nombre <span class="text-danger">*</span></label>
+                <input type="text" placeholder="Ingrese el nombre..." class="form-control mb-2"
+                    formControlName="nombre">
+                @if (nombre.errors && (nombre.dirty || nombre.touched)) {
+                    <span class="text-danger mb-2">El nombre es requerido.</span>
+                }
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Máscara <span class="text-danger">*</span></label>
+                <input type="text" placeholder="Ingrese la máscara..." class="form-control mb-2"
+                    formControlName="mascara">
+                @if (mascara.errors && (mascara.dirty || mascara.touched)) {
+                    <span class="text-danger mb-2">La máscara es requerida.</span>
+                }
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-outline-dark" [disabled]="formGuardar.invalid">
+                    <i class="bi bi-plus-circle"></i>
+                    Guardar
+                </button>
+                <a type="button" class="btn btn-outline-danger" routerLink="/app/tipos-identificacion">
+                    <i class="bi bi-x-circle"></i>
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

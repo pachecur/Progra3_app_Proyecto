@@ -1,0 +1,62 @@
+<div class="dashboard">
+  <div class="dash-header">
+    <h1 class="dash-title">Panel de control</h1>
+  </div>
+
+  <div class="stat-row">
+    <a routerLink="/app/empleados" class="stat-item">
+      <span class="stat-item__label">Empleados activos</span>
+      <span class="stat-item__value">{{ cargando() ? '—' : (resumen()?.empleados ?? 0) }}</span>
+    </a>
+    <a routerLink="/app/tareas" class="stat-item">
+      <span class="stat-item__label">Tareas activas</span>
+      <span class="stat-item__value">{{ cargando() ? '—' : (resumen()?.tareas ?? 0) }}</span>
+    </a>
+    <a routerLink="/app/estados-orden" class="stat-item">
+      <span class="stat-item__label">Estados de orden</span>
+      <span class="stat-item__value">{{ cargando() ? '—' : (resumen()?.estados_orden ?? 0) }}</span>
+    </a>
+    <a routerLink="/app/tipos-identificacion" class="stat-item">
+      <span class="stat-item__label">Tipos de identificación</span>
+      <span class="stat-item__value">{{ cargando() ? '—' : (resumen()?.tipos_identificacion ?? 0) }}</span>
+    </a>
+  </div>
+
+  <div class="dash-body">
+    <section class="dash-section">
+      <h2 class="dash-section__title">Acciones rápidas</h2>
+      <div class="action-list">
+        <a routerLink="/app/empleados/guardar" class="action-item">
+          <i class="bi bi-person-plus"></i>
+          <span>Nuevo empleado</span>
+        </a>
+        <a routerLink="/app/tareas/guardar" class="action-item">
+          <i class="bi bi-list-task"></i>
+          <span>Nueva tarea</span>
+        </a>
+        <a routerLink="/app/estados-orden/guardar" class="action-item">
+          <i class="bi bi-flag"></i>
+          <span>Nuevo estado de orden</span>
+        </a>
+        <a routerLink="/app/tipos-identificacion/guardar" class="action-item">
+          <i class="bi bi-ui-checks-grid"></i>
+          <span>Nuevo tipo de identificación</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="dash-section">
+      <h2 class="dash-section__title">Administración</h2>
+      <div class="action-list">
+        <a routerLink="/app/usuarios" class="action-item">
+          <i class="bi bi-people"></i>
+          <span>Usuarios del sistema</span>
+        </a>
+        <a routerLink="/app/tipos-identificacion" class="action-item">
+          <i class="bi bi-card-heading"></i>
+          <span>Catálogo de tipos de identificación</span>
+        </a>
+      </div>
+    </section>
+  </div>
+</div>

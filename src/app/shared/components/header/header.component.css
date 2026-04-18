@@ -1,0 +1,44 @@
+.app-header-bar.navbar {
+  background-color: var(--clr-header-bg) !important;
+  border-bottom: 1px solid var(--clr-header-border);
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  min-height: 3rem;
+  box-shadow: none !important;
+}
+
+.app-header-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1e293b !important;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.app-header-logo {
+  font-size: 1.625rem;
+  line-height: 1;
+}
+
+.app-header-title {
+  white-space: nowrap;
+  color: #1e293b;
+}
+
+.app-header-bar .nav-link {
+  color: #64748b !important;
+  font-size: 0.875rem;
+}
+
+.app-header-bar .dropdown-menu {
+  border: 1px solid var(--clr-header-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.dropdown-item {
+  cursor: pointer;
+}

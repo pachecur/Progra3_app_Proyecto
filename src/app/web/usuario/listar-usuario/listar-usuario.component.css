@@ -1,0 +1,7 @@
+:host ::ng-deep .col-estado-center .mat-sort-header-container {
+  justify-content: center !important;
+}
+
+:host ::ng-deep th.col-estado-center {
+  text-align: center !important;
+}

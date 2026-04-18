@@ -1,0 +1,18 @@
+<div class="msg-card">
+  <div class="msg-body">
+    <span class="msg-icon msg-icon--{{ tipo }}">
+      <i class="{{ icono }}"></i>
+    </span>
+    <h5 class="msg-title">{{ titulo }}</h5>
+    <p class="msg-text">{{ mensaje }}</p>
+  </div>
+
+  <div class="msg-footer">
+    @if (confirmacion) {
+      <button type="button" class="btn btn-outline-secondary" (click)="cancelar()">Cancelar</button>
+      <button type="button" class="btn btn-primary" (click)="aceptar()">Confirmar</button>
+    } @else {
+      <button type="button" class="btn {{ btnClass }}" (click)="aceptar()">Aceptar</button>
+    }
+  </div>
+</div>

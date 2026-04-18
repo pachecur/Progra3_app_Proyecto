@@ -1,0 +1,13 @@
+.layout-shell {
+  min-height: calc(100vh - 3rem);
+}
+
+.app-layout-sidebar {
+  border-right: 1px solid var(--clr-sidebar-border);
+  background-color: var(--clr-sidebar-bg);
+}
+
+.layout-main {
+  background-color: var(--clr-content-bg);
+  min-height: calc(100vh - 3rem);
+}

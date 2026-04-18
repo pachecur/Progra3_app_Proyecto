@@ -1,0 +1,72 @@
+<div class="login-page">
+  <main class="login-box">
+    <div class="login-brand">
+      <i class="bi bi-kanban fs-4 text-primary"></i>
+      <span>P3 – Gestión de tareas y empleados</span>
+    </div>
+
+    <div class="card login-card">
+      <div class="card-header">Inicio de sesión</div>
+      <div class="card-body">
+        <div class="login-heading">
+          <h3 class="h3 fw-semibold">Bienvenido</h3>
+          <p>Ingresa tus credenciales para continuar.</p>
+        </div>
+
+        <form [formGroup]="formLogin" (ngSubmit)="iniciarSesion()" autocomplete="on">
+          <div class="mb-3">
+            <label class="form-label">Usuario <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Ingrese su usuario..."
+              formControlName="acceso"
+              autocomplete="username"
+              autofocus
+            />
+            @if (acceso.errors && (acceso.dirty || acceso.touched)) {
+              <span class="text-danger small">El usuario es requerido.</span>
+            }
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Contraseña <span class="text-danger">*</span></label>
+            <div class="login-password">
+              <input
+                [type]="verSecreto() ? 'text' : 'password'"
+                class="form-control"
+                placeholder="Ingrese su contraseña..."
+                formControlName="secreto"
+                autocomplete="current-password"
+              />
+              <button
+                type="button"
+                class="login-password-toggle"
+                (click)="alternarSecreto()"
+                tabindex="-1"
+                [attr.aria-label]="verSecreto() ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+              >
+                <i class="bi" [class.bi-eye]="!verSecreto()" [class.bi-eye-slash]="verSecreto()"></i>
+              </button>
+            </div>
+            @if (secreto.errors && (secreto.dirty || secreto.touched)) {
+              <span class="text-danger small">La contraseña es requerida.</span>
+            }
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 login-submit" [disabled]="formLogin.invalid || cargando()">
+            @if (cargando()) {
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span>Iniciando sesión...</span>
+            } @else {
+              <i class="bi bi-box-arrow-in-right"></i>
+              <span>Iniciar sesión</span>
+            }
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <p class="login-footer">© {{ anio }} Programación III</p>
+  </main>
+</div>

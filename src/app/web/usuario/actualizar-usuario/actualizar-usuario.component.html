@@ -1,0 +1,107 @@
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-buttom"
+>
+  <h3 class="h3 fw-semibold text-dark mb-0">Actualizar Usuario</h3>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a
+      type="button"
+      class="btn btn-sm btn-outline-danger d-flex align-items-center gap-2 fw-medium"
+      routerLink="/app/usuarios"
+    >
+      <i class="bi bi-box-arrow-left"></i>
+      <span>Regresar al listado</span>
+    </a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">Modifique los valores requeridos. <span class="text-danger">*</span></div>
+  <div class="card-body">
+    <form [formGroup]="formActualizar" (ngSubmit)="actualizar()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Nombre <span class="text-danger">*</span></label>
+          <input type="text" placeholder="Ingrese el nombre..." class="form-control" formControlName="nombre" />
+          @if (nombre.errors && (nombre.dirty || nombre.touched)) {
+            <span class="text-danger small">El nombre es requerido.</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Apellidos <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            placeholder="Ingrese los apellidos..."
+            class="form-control"
+            formControlName="apellidos"
+          />
+          @if (apellidos.errors && (apellidos.dirty || apellidos.touched)) {
+            <span class="text-danger small">Los apellidos son requeridos.</span>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Usuario (acceso) <span class="text-danger">*</span></label>
+          <input
+            type="text"
+            placeholder="Ingrese el usuario..."
+            class="form-control"
+            formControlName="acceso"
+            autocomplete="off"
+          />
+          @if (acceso.errors && (acceso.dirty || acceso.touched)) {
+            <span class="text-danger small">El usuario es requerido.</span>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">
+            Contraseña
+            <small class="text-muted">(Dejar vacío para conservar la actual)</small>
+          </label>
+          <div class="input-group">
+            <input
+              [type]="verSecreto() ? 'text' : 'password'"
+              class="form-control"
+              placeholder="Nueva contraseña"
+              formControlName="secreto"
+              autocomplete="new-password"
+            />
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="alternarSecreto()"
+              tabindex="-1"
+              [attr.aria-label]="verSecreto() ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+            >
+              <i class="bi" [class.bi-eye]="!verSecreto()" [class.bi-eye-slash]="verSecreto()"></i>
+            </button>
+          </div>
+          @if (secreto.errors?.['minlength'] && (secreto.dirty || secreto.touched)) {
+            <span class="text-danger small">Debe tener al menos 6 caracteres.</span>
+          }
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Estado <span class="text-danger">*</span></label>
+          <select class="form-select" formControlName="estado">
+            <option [ngValue]="1">Activo</option>
+            <option [ngValue]="0">Inactivo</option>
+          </select>
+        </div>
+      </div>
+
+      <hr class="my-4" />
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="submit" class="btn btn-outline-dark" [disabled]="formActualizar.invalid">
+          <i class="bi bi-save"></i>
+          Actualizar
+        </button>
+        <a type="button" class="btn btn-outline-danger" routerLink="/app/usuarios">
+          <i class="bi bi-x-circle"></i>
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+/* ─── Sidebar ──────────────────────────────────────────────────────────────── */
+
+.app-sidebar {
+    background-color: var(--clr-sidebar-bg) !important;
+    border-right: 1px solid var(--clr-sidebar-border) !important;
+}
+
+.app-sidebar .offcanvas-header {
+    border-bottom: 1px solid var(--clr-sidebar-border);
+    padding: 1rem 1.25rem;
+}
+
+.app-sidebar .offcanvas-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* ─── Nav ──────────────────────────────────────────────────────────────────── */
+
+.app-sidebar .offcanvas-body {
+    padding: 0.75rem 0 !important;
+}
+
+.app-sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin: 1px 0.75rem;
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 400 !important;
+    color: var(--clr-sidebar-text) !important;
+    border-radius: 6px !important;
+    border: none !important;
+    transition: background-color 0.12s, color 0.12s !important;
+}
+
+.app-sidebar .nav-link:hover {
+    background-color: var(--clr-sidebar-hover-bg) !important;
+    color: var(--clr-sidebar-text-hover) !important;
+}
+
+.app-sidebar .nav-link.active {
+    background-color: var(--clr-sidebar-active-bg) !important;
+    color: var(--clr-sidebar-text-active) !important;
+    font-weight: 500 !important;
+}
+
+.app-sidebar .nav-link i {
+    font-size: 1rem !important;
+    width: 1rem !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0;
+    opacity: 1 !important;
+}
+
+/* ─── Section label & divider ──────────────────────────────────────────────── */
+
+.app-sidebar hr {
+    border: 0 !important;
+    border-top: 1px solid var(--clr-sidebar-border) !important;
+    opacity: 1 !important;
+    margin: 0.5rem 1.25rem !important;
+}
+
+.app-sidebar .sidebar-heading {
+    font-size: 0.6875rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    color: #94a3b8 !important;
+    padding: 0 1.5rem !important;
+    margin-bottom: 0.125rem !important;
+}
