@@ -93,6 +93,27 @@ export const routes: Routes = [
           import('./web/tarea/actualizar-tarea/actualizar-tarea.component').then((m) => m.ActualizarTarea),
       },
       {
+        path: 'ordenes-trabajo',
+        loadComponent: () =>
+          import('./web/orden-trabajo/listar-orden-trabajo/listar-orden-trabajo.component').then(
+            (m) => m.ListarOrdenTrabajo
+          ),
+      },
+      {
+        path: 'ordenes-trabajo/guardar',
+        loadComponent: () =>
+          import('./web/orden-trabajo/guardar-orden-trabajo/guardar-orden-trabajo.component').then(
+            (m) => m.GuardarOrdenTrabajo
+          ),
+      },
+      {
+        path: 'ordenes-trabajo/actualizar/:id',
+        loadComponent: () =>
+          import('./web/orden-trabajo/actualizar-orden-trabajo/actualizar-orden-trabajo.component').then(
+            (m) => m.ActualizarOrdenTrabajo
+          ),
+      },
+      {
         path: 'usuarios',
         title: 'Usuarios - P3',
         loadComponent: () =>

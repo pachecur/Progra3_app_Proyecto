@@ -79,8 +79,12 @@ export class GuardarEmpleado implements OnInit {
 
   public guardar(): void {
     if (this.formGuardar.valid) {
+      const idTipo = this.id_tipo_identificacion.value;
+      if (idTipo == null || idTipo < 1) {
+        return;
+      }
       const emp = {
-        tipo_identificacion: { id_tipo_identificacion: this.id_tipo_identificacion.value ?? 0 },
+        tipo_identificacion: { id_tipo_identificacion: idTipo },
         identificacion: this.identificacion.value ?? '',
         nombre: this.nombre.value ?? '',
         apellidos: this.apellidos.value ?? '',

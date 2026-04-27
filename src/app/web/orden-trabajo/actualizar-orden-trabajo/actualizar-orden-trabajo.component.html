@@ -1,0 +1,146 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-buttom">
+  <h3 class="h3 fw-semibold text-dark mb-0">Actualizar orden de trabajo</h3>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <a
+      type="button"
+      class="btn btn-sm btn-outline-danger d-flex align-items-center gap-2 fw-medium"
+      routerLink="/app/ordenes-trabajo"
+    >
+      <i class="bi bi-box-arrow-left"></i>
+      <span>Regresar al listado</span>
+    </a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    Ingrese los valores requeridos. <span class="text-danger">*</span>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="formGuardar" (ngSubmit)="actualizar()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Empleado <span class="text-danger">*</span></label>
+          <select class="form-select" formControlName="id_empleado">
+            <option [ngValue]="null" disabled>Seleccione...</option>
+            @for (e of empleados; track e.id_empleado) {
+              <option [ngValue]="e.id_empleado">{{ e.nombre }} {{ e.apellidos }}</option>
+            }
+          </select>
+          @if (
+            formGuardar.get('id_empleado')?.errors &&
+            (formGuardar.get('id_empleado')?.dirty || formGuardar.get('id_empleado')?.touched)
+          ) {
+            <span class="text-danger d-block small mt-1">Seleccione un empleado.</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Estado de orden (catálogo) <span class="text-danger">*</span></label>
+          <select class="form-select" formControlName="id_estado_orden">
+            <option [ngValue]="null" disabled>Seleccione...</option>
+            @for (eo of estadosOrden; track eo.id_estado_orden) {
+              <option [ngValue]="eo.id_estado_orden">{{ eo.nombre }}</option>
+            }
+          </select>
+          @if (
+            formGuardar.get('id_estado_orden')?.errors &&
+            (formGuardar.get('id_estado_orden')?.dirty || formGuardar.get('id_estado_orden')?.touched)
+          ) {
+            <span class="text-danger d-block small mt-1">Seleccione un estado de orden.</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Fecha <span class="text-danger">*</span></label>
+          <input type="date" class="form-control" formControlName="fecha" />
+          @if (formGuardar.get('fecha')?.errors && (formGuardar.get('fecha')?.dirty || formGuardar.get('fecha')?.touched)) {
+            <span class="text-danger d-block small mt-1">La fecha es requerida.</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Total horas <span class="text-danger">*</span></label>
+          <input type="number" class="form-control" formControlName="total_horas" min="0" step="0.25" />
+          @if (
+            formGuardar.get('total_horas')?.errors &&
+            (formGuardar.get('total_horas')?.dirty || formGuardar.get('total_horas')?.touched)
+          ) {
+            <span class="text-danger d-block small mt-1">Indique un total de horas válido (≥ 0).</span>
+          }
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Estado <span class="text-danger">*</span></label>
+          <select class="form-select" formControlName="estado">
+            <option [ngValue]="0">Inactiva</option>
+            <option [ngValue]="1">Activa</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Descripción <span class="text-danger">*</span></label>
+          <textarea
+            class="form-control"
+            rows="3"
+            placeholder="Descripción de la orden..."
+            formControlName="descripcion"
+          ></textarea>
+          @if (
+            formGuardar.get('descripcion')?.errors &&
+            (formGuardar.get('descripcion')?.dirty || formGuardar.get('descripcion')?.touched)
+          ) {
+            <span class="text-danger d-block small mt-1">La descripción es requerida.</span>
+          }
+        </div>
+      </div>
+
+      <hr class="my-4" />
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+        <h4 class="h6 fw-semibold text-dark mb-0">Tareas de la orden</h4>
+        <button type="button" class="btn btn-sm btn-outline-secondary" (click)="agregarLinea()">
+          <i class="bi bi-plus-lg"></i>
+          Agregar línea
+        </button>
+      </div>
+      <p class="small text-muted mb-3">
+        Al guardar se reemplazan las líneas por lo indicado aquí (puede dejar la lista vacía para quitar todas).
+      </p>
+
+      <div formArrayName="lineas">
+        @for (ctrl of lineas.controls; track $index; let i = $index) {
+          <div class="row g-3 align-items-end border rounded p-3 mb-3 bg-light" [formGroupName]="i">
+            <div class="col-md-5">
+              <label class="form-label">Tarea</label>
+              <select class="form-select" formControlName="id_tarea">
+                <option [ngValue]="null">—</option>
+                @for (t of tareas; track t.id_tarea) {
+                  <option [ngValue]="t.id_tarea">{{ t.nombre }}</option>
+                }
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Horas</label>
+              <input type="number" class="form-control" formControlName="horas" min="0" step="0.25" />
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Observación</label>
+              <input type="text" class="form-control" formControlName="observacion" placeholder="Opcional" />
+            </div>
+            <div class="col-md-1 text-md-end">
+              <button type="button" class="btn btn-sm btn-outline-danger" (click)="quitarLinea(i)" title="Quitar línea">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+        <button type="submit" class="btn btn-outline-dark" [disabled]="formGuardar.invalid">
+          <i class="bi bi-plus-circle"></i>
+          Guardar
+        </button>
+        <a type="button" class="btn btn-outline-danger" routerLink="/app/ordenes-trabajo">
+          <i class="bi bi-x-circle"></i>
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

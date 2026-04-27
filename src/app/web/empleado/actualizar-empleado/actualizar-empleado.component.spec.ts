@@ -13,13 +13,17 @@ describe('ActualizarEmpleado', () => {
 
   const empleadoMock = {
     id_empleado: 1,
-    id_tipo_identificacion: 1,
+    tipo_identificacion: {
+      id_tipo_identificacion: 1,
+      nombre: 'Cédula',
+      mascara: '',
+    },
     identificacion: '1',
     nombre: 'Juan',
     apellidos: 'Pérez',
     telefono: '8888',
     correo: 'juan@test.com',
-    estado: 'activo',
+    estado: 1,
     direccion: 'Dir',
     puesto: 'Dev',
   };

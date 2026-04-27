@@ -40,9 +40,13 @@ export class ListarEmpleado implements AfterViewInit {
       if (!f) {
         return true;
       }
+      const tipo = data.tipo_identificacion;
       const texto = [
         data.id_empleado,
         data.id_tipo_identificacion,
+        tipo?.id_tipo_identificacion,
+        tipo?.nombre,
+        tipo?.mascara,
         data.identificacion,
         data.nombre,
         data.apellidos,
